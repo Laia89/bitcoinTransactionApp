@@ -1,5 +1,6 @@
 package com.github.transactions;
 
+import com.github.transactions.resources.TransactionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -21,8 +22,10 @@ public class TransactionApp extends Application<TransactionConf> {
     }
 
     @Override
-    public void run(TransactionConf configuration, Environment environment) {
-        // nothing to do yet
+    public void run(TransactionConf configuration, Environment environment) throws Exception{
+
+        final TransactionResource transactionResource = new TransactionResource();
+        environment.jersey().register(transactionResource);
     }
 
 }
